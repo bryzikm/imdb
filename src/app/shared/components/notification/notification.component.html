@@ -1,7 +1,7 @@
-<div *ngIf="isVisible"
+<div *ngIf="(spinner$ | async).isVisible"
      class="notification"
-     [ngClass]="{'notification--failure': isFailure}">
+     [ngClass]="{'notification--failure': (spinner$ | async).isFailure}">
   <span class="notification__text">
-    {{ text | translate }}
+    {{ (spinner$ | async).text | translate }}
   </span>
 </div>

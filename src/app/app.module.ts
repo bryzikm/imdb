@@ -10,6 +10,8 @@ import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './store/auth/auth.effects';
 import {StoreModule} from '@ngrx/store';
 import {spinnerReducer} from './store/spinner/spinner.reducer';
+import {notificationReducer} from './store/notification/notification.reducer';
+import {NotificationEffects} from './store/notification/notification.effects';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import {spinnerReducer} from './store/spinner/spinner.reducer';
     HttpClientModule,
     SharedModule.forRoot(),
     StoreModule.forRoot({
-      spinner: spinnerReducer
+      spinner: spinnerReducer,
+      notification: notificationReducer,
     }),
     EffectsModule.forRoot([
-      AuthEffects
+      AuthEffects,
+      NotificationEffects
     ]),
     TranslateModule.forRoot({
       loader: {

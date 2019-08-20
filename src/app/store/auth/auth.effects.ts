@@ -2,9 +2,11 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AuthService} from '../../modules/auth/auth.service';
 import * as AuthActions from './auth.actions';
-import * as SpinnerActions from '../spinner/spinner.actions';
+import {hideSpinner} from '../spinner/spinner.actions';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {loginUserSuccess} from './auth.actions';
+import {notificationMiddleware, showNotification} from '../notification/notification.actions';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
@@ -14,9 +16,13 @@ export class AuthEffects {
       ofType(AuthActions.LOGIN_USER),
       mergeMap((payload) => this.authService.loginUser(payload)
         .pipe(
-          map((response) => ({type: AuthActions.LOGIN_USER_SUCCESS, payload: response})),
-          catchError(() => of({type: SpinnerActions.HIDE_SPINNER})),
-        )
+          map((response: { token: string }) => loginUserSuccess(response)),
+          catchError(() => [
+            hideSpinner(),
+            showNotification({isFailure: true, text: 'SIGN_IN_FAILED'}),
+            notificationMiddleware()
+          ])
+        ),
       )
     )
   );
@@ -24,15 +30,21 @@ export class AuthEffects {
   loginUserSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.LOGIN_USER_SUCCESS),
-      mergeMap(payload => {
-        console.log(payload);
-        this.authService.saveToken(payload)
-        return of({type: SpinnerActions.HIDE_SPINNER});
+      switchMap(payload => {
+        this.authService.saveToken(payload);
+        this.router.navigate(['/video']);
+
+        return [
+          hideSpinner(),
+          showNotification({isFailure: false, text: 'SIGN_IN_SUCCESS'}),
+          notificationMiddleware()
+        ];
       })
     )
   );
 
   constructor(private actions$: Actions,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 }
