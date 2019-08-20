@@ -6,6 +6,10 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SharedModule} from './shared/shared.module';
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffects} from './store/auth/auth.effects';
+import {StoreModule} from '@ngrx/store';
+import {spinnerReducer} from './store/spinner/spinner.reducer';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,12 @@ import {SharedModule} from './shared/shared.module';
     AppRouting,
     HttpClientModule,
     SharedModule.forRoot(),
+    StoreModule.forRoot({
+      spinner: spinnerReducer
+    }),
+    EffectsModule.forRoot([
+      AuthEffects
+    ]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

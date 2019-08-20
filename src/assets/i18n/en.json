@@ -4,5 +4,7 @@
   "PASSWORD": "Password",
   "FIELD_REQUIRED": "Field is required",
   "INCORRECT_EMAIL": "Email is incorrect",
-  "LOGIN_FORM": "Login form"
+  "LOGIN_FORM": "Login form",
+  "SIGN_IN_SUCCESS": "You have been successfully logged in",
+  "SIGN_IN_FAILED": "Errors occurred while login"
 }

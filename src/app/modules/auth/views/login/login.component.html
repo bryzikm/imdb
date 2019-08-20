@@ -1,11 +1,11 @@
-<form class="form" [formGroup]="form">
+<form class="form" [formGroup]="form" (submit)="loginUser(form)">
   <h2 class="form__header">
     {{ 'LOGIN_FORM' | translate }}
   </h2>
   <app-input [type]="'text'"
              [placeholder]="'Username'"
-             [name]="'username'"
-             [control]="form.get('username')">
+             [name]="'login'"
+             [control]="form.get('login')">
   </app-input>
   <app-input [type]="'password'"
              [placeholder]="'Password'"

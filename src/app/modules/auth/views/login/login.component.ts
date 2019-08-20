@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {loginUser} from '../../../../store/auth/auth.actions';
+import {showSpinner} from '../../../../store/spinner/spinner.actions';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +12,21 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup = this.initFormGroup();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private store: Store<{}>) {
+  }
 
   ngOnInit() {
   }
 
+  loginUser({value}) {
+    this.store.dispatch(showSpinner());
+    this.store.dispatch(loginUser({login: value.login, password: value.password}));
+  }
+
   private initFormGroup() {
     return this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
+      login: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }

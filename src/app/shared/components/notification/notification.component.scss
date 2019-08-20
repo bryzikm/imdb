@@ -1,0 +1,20 @@
+@import "~src/assets/scss/variables";
+
+.notification {
+  position: fixed;
+  z-index: 150;
+  background-color: $green-1;
+  padding: 20px;
+  width: 185px;
+  right: 45px;
+  bottom: 45px;
+
+  &--failure {
+    background-color: $red-1;
+  }
+
+  &__text {
+    color: $white;
+    font-size: $font-15;
+  }
+}

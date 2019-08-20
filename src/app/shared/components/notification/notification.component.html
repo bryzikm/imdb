@@ -1,0 +1,7 @@
+<div *ngIf="isVisible"
+     class="notification"
+     [ngClass]="{'notification--failure': isFailure}">
+  <span class="notification__text">
+    {{ text | translate }}
+  </span>
+</div>
