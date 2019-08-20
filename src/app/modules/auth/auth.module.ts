@@ -6,12 +6,17 @@ import {AuthRouting} from './auth.routing';
 import {MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateModule, TranslateParser} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../../app.module';
 import {HttpClient} from '@angular/common/http';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent],
+  declarations: [
+    AuthComponent,
+    LoginComponent
+  ],
   imports: [
     CommonModule,
     AuthRouting,
+    SharedModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
