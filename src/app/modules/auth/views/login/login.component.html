@@ -1,5 +1,19 @@
-<form>
-  <input type="text" name="username" />
-  <input type="password" name="password" />
-  <button>{{ 'SIGN_IN' | translate }}</button>
+<form class="form" [formGroup]="form">
+  <h2 class="form__header">
+    {{ 'LOGIN_FORM' | translate }}
+  </h2>
+  <app-input [type]="'text'"
+             [placeholder]="'Username'"
+             [name]="'username'"
+             [control]="form.get('username')">
+  </app-input>
+  <app-input [type]="'password'"
+             [placeholder]="'Password'"
+             [name]="'password'"
+             [control]="form.get('password')">
+  </app-input>
+  <app-button [text]="'SIGN_IN' | translate"
+              [disabled]="form.invalid"
+              [type]="'submit'">
+  </app-button>
 </form>

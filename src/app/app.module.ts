@@ -5,6 +5,7 @@ import {AppRouting} from './app.routing';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     BrowserModule,
     AppRouting,
     HttpClientModule,
+    SharedModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

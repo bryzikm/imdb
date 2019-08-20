@@ -1,0 +1,12 @@
+@import "~src/assets/scss/variables";
+
+.form {
+  width: 500px;
+
+  &__header {
+    color: $black;
+    font-size: $font-24;
+    text-align: center;
+    margin: 0 0 30px;
+  }
+}

@@ -1,3 +1,8 @@
 {
-  "SIGN_IN": "Sign in"
+  "SIGN_IN": "Sign in",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "FIELD_REQUIRED": "Field is required",
+  "INCORRECT_EMAIL": "Email is incorrect",
+  "LOGIN_FORM": "Login form"
 }

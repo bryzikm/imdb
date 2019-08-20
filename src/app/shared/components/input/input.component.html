@@ -1,0 +1,12 @@
+<div class="input">
+  <input class="input__field"
+         [type]="type"
+         [disabled]="disabled"
+         [formControl]="control"
+         [placeholder]="placeholder"
+         [name]="name"
+         ngDefaultControl/>
+  <app-validation class="input__validation"
+                  [control]="control">
+  </app-validation>
+</div>
