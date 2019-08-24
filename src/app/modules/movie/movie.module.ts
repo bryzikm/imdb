@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {VideoComponent} from './video.component';
-import {VideoListComponent} from './views/video-list/video-list.component';
-import {VideoDetailsComponent} from './views/video-details/video-details.component';
-import {VideoRouting} from './video.routing';
+import {MovieComponent} from './movie.component';
+import {MovieListComponent} from './views/movie-list/movie-list.component';
+import {MovieDetailsComponent} from './views/movie-details/movie-details.component';
+import {MovieRouting} from './movie.routing';
 import {SharedModule} from '../../shared/shared.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../../app.module';
@@ -11,13 +11,13 @@ import {HttpClient} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    VideoComponent,
-    VideoListComponent,
-    VideoDetailsComponent
+    MovieComponent,
+    MovieListComponent,
+    MovieDetailsComponent
   ],
   imports: [
     CommonModule,
-    VideoRouting,
+    MovieRouting,
     SharedModule,
     TranslateModule.forChild({
       loader: {
@@ -28,5 +28,5 @@ import {HttpClient} from '@angular/common/http';
     })
   ]
 })
-export class VideoModule {
+export class MovieModule {
 }

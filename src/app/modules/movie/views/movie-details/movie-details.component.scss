@@ -1,0 +1,27 @@
+@import "~src/assets/scss/variables";
+@import "~src/assets/scss/mixins";
+
+.movie-details {
+  margin: 80px 0 0;
+
+  &__header {
+    padding: 30px 0;
+    width: 100%;
+    color: $blue-1;
+    font-size: $font-24;
+  }
+
+  &__header-back {
+    text-decoration: none;
+    padding: 0;
+    margin-right: 15px;
+    color: $green-1;
+    font-weight: 400;
+    @include transition(.3s);
+
+    &:hover {
+      color: darken($green-1, 10%);
+      @include transition(.3s);
+    }
+  }
+}

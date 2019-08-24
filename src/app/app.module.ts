@@ -13,6 +13,8 @@ import {spinnerReducer} from './store/spinner/spinner.reducer';
 import {notificationReducer} from './store/notification/notification.reducer';
 import {NotificationEffects} from './store/notification/notification.effects';
 import {JwtModule} from '@auth0/angular-jwt';
+import {MovieEffects} from './store/movie/movie.effects';
+import {movieReducer} from './store/movie/movie.reducer';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import {JwtModule} from '@auth0/angular-jwt';
     StoreModule.forRoot({
       spinner: spinnerReducer,
       notification: notificationReducer,
+      movie: movieReducer
     }),
     EffectsModule.forRoot([
       AuthEffects,
-      NotificationEffects
+      NotificationEffects,
+      MovieEffects
     ]),
     TranslateModule.forRoot({
       loader: {

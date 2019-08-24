@@ -1,0 +1,11 @@
+<section class="movie-details">
+  <div *ngIf="movie$ | async"
+       class="container">
+    <h2 class="movie-details__header">
+     <a class="movie-details__header-back" routerLink="/movie"><</a> {{ (movie$ | async).title }}
+    </h2>
+    <div class="movie-details__content">
+
+    </div>
+  </div>
+</section>

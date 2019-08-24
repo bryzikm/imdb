@@ -8,8 +8,8 @@ const APP_ROUTES: Routes = [
     loadChildren: './modules/auth/auth.module#AuthModule',
   },
   {
-    path: 'video',
-    loadChildren: './modules/video/video.module#VideoModule',
+    path: 'movie',
+    loadChildren: './modules/movie/movie.module#MovieModule',
     canActivate: [AuthGuard]
   },
   {

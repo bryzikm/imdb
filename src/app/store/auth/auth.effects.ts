@@ -32,7 +32,7 @@ export class AuthEffects {
       ofType(AuthActions.LOGIN_USER_SUCCESS),
       switchMap((payload: {token: string}) => {
         this.authService.saveToken(payload.token);
-        this.router.navigate(['/video']);
+        this.router.navigate(['/movie']);
 
         return [
           hideSpinner(),
