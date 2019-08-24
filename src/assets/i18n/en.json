@@ -10,5 +10,6 @@
   "LOGOUT_SUCCESS": "You have been successfully logged out",
   "LOGOUT": "Logout",
   "IMDB": "IMDB",
-  "VIDEO_LIST": "List of videos"
+  "VIDEO_LIST": "List of videos",
+  "MISSING_DATA": "The data you're looking for is missing"
 }

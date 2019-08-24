@@ -1,0 +1,26 @@
+@import "~src/assets/scss/variables";
+
+.not-found {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 45px 30px;
+
+  &__header {
+    font-size: $font-120;
+    color: $blue-1;
+    margin: 0 0 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__statement {
+    color: $blue-1;
+    font-size: $font-24;
+    width: 100%;
+    text-align: center;
+  }
+}

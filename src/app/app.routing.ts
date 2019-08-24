@@ -13,8 +13,12 @@ const APP_ROUTES: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'error',
+    loadChildren: './modules/error/error.module#ErrorModule'
+  },
+  {
     path: '**',
-    redirectTo: 'video'
+    redirectTo: 'error'
   }
 ];
 
