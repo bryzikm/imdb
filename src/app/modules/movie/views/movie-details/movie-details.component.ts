@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {Movie} from '../../models/movie.model';
+import {Store} from '@ngrx/store';
+import {MovieState} from '../../../../store/movie/movie.reducer';
+import {getMovieByImdbId} from '../../../../store/movie/movie.actions';
+import {showSpinner} from '../../../../store/spinner/spinner.actions';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,13 +13,21 @@ import {Movie} from '../../models/movie.model';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit {
-  movie$: Observable<Movie>;
+  movie$: Observable<Movie> = this.store.select(state => state.movie);
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private store: Store<MovieState>) {
   }
 
   ngOnInit() {
-    console.log(this.getMovieIdFromRouteParams());
+    this.getMovieByImbdId();
+  }
+
+  private getMovieByImbdId() {
+    const imdbId = this.getMovieIdFromRouteParams();
+
+    this.store.dispatch(showSpinner());
+    this.store.dispatch(getMovieByImdbId({imdbId}));
   }
 
   private getMovieIdFromRouteParams(): string {

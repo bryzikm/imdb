@@ -11,5 +11,7 @@
   "LOGOUT": "Logout",
   "IMDB": "IMDB",
   "MOVIE_LIST": "List of movies",
-  "MISSING_DATA": "The data you're looking for is missing"
+  "MISSING_DATA": "The data you're looking for is missing",
+  "GET_MOVIE_ERROR": "Error occurred while getting the movie",
+  "HOME": "Home"
 }

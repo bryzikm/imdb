@@ -9,8 +9,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NotificationComponent} from './components/notification/notification.component';
 import {UrlsService} from './services/urls/urls.service';
 import {LoggerService} from './services/logger/logger.service';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {AuthGuard} from './guards/auth.guard';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptor} from './interceptors/token.interceptor';
+import {ErrorInterceptor} from './interceptors/error.interceptor';
 
 const COMPONENTS = [
   InputComponent,
@@ -45,7 +48,17 @@ export class SharedModule {
       providers: [
         UrlsService,
         LoggerService,
-        AuthGuard
+        AuthGuard,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: TokenInterceptor,
+          multi: true
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: ErrorInterceptor,
+          multi: true
+        }
       ]
     };
   }
