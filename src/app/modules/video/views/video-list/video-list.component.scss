@@ -1,0 +1,11 @@
+@import "~src/assets/scss/variables";
+
+.video-list {
+  margin: 80px 0 0;
+
+  &__header {
+    padding: 30px 0;
+    width: 100%;
+    font-size: $font-24;
+  }
+}

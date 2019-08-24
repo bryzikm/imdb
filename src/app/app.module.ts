@@ -12,6 +12,7 @@ import {StoreModule} from '@ngrx/store';
 import {spinnerReducer} from './store/spinner/spinner.reducer';
 import {notificationReducer} from './store/notification/notification.reducer';
 import {NotificationEffects} from './store/notification/notification.effects';
+import {JwtModule} from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,11 @@ import {NotificationEffects} from './store/notification/notification.effects';
         deps: [HttpClient]
       }
     }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('TOKEN')
+      }
+    })
   ],
   providers: [
     HttpClient,

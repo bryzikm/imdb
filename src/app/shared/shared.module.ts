@@ -9,13 +9,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NotificationComponent} from './components/notification/notification.component';
 import {UrlsService} from './services/urls/urls.service';
 import {LoggerService} from './services/logger/logger.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {AuthGuard} from './guards/auth.guard';
 
 const COMPONENTS = [
   InputComponent,
   ValidationComponent,
   ButtonComponent,
   SpinnerComponent,
-  NotificationComponent
+  NotificationComponent,
+  NavbarComponent
 ];
 
 @NgModule({
@@ -41,7 +44,8 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         UrlsService,
-        LoggerService
+        LoggerService,
+        AuthGuard
       ]
     };
   }

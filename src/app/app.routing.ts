@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from './shared/guards/auth.guard';
 
 const APP_ROUTES: Routes = [
   {
@@ -9,10 +10,11 @@ const APP_ROUTES: Routes = [
   {
     path: 'video',
     loadChildren: './modules/video/video.module#VideoModule',
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: 'video'
   }
 ];
 

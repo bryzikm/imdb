@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UrlsService} from '../../shared/services/urls/urls.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import {UrlsService} from '../../shared/services/urls/urls.service';
 export class AuthService {
   private readonly TOKEN = 'TOKEN';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private jwtHelper: JwtHelperService) {
   }
 
   loginUser({login, password}) {
@@ -21,5 +23,25 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem(this.TOKEN);
+  }
+
+  removeToken() {
+    localStorage.removeItem(this.TOKEN);
+  }
+
+  isUserAuthenticated() {
+    const token = this.getToken();
+
+    try {
+      if (token) {
+        const decodedToken = this.jwtHelper.decodeToken(token);
+
+        return !this.jwtHelper.isTokenExpired(token) && decodedToken;
+      }
+
+      return false;
+    } catch (e) {
+      return false;
+    }
   }
 }

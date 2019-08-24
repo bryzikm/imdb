@@ -16,5 +16,13 @@ body {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: $yellow-2;
+}
+
+.container {
+  width: 1140px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

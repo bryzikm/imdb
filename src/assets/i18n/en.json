@@ -6,5 +6,9 @@
   "INCORRECT_EMAIL": "Email is incorrect",
   "LOGIN_FORM": "Login form",
   "SIGN_IN_SUCCESS": "You have been successfully logged in",
-  "SIGN_IN_FAILED": "Errors occurred while login"
+  "SIGN_IN_FAILED": "Errors occurred while login",
+  "LOGOUT_SUCCESS": "You have been successfully logged out",
+  "LOGOUT": "Logout",
+  "IMDB": "IMDB",
+  "VIDEO_LIST": "List of videos"
 }

@@ -30,13 +30,29 @@ export class AuthEffects {
   loginUserSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.LOGIN_USER_SUCCESS),
-      switchMap(payload => {
-        this.authService.saveToken(payload);
+      switchMap((payload: {token: string}) => {
+        this.authService.saveToken(payload.token);
         this.router.navigate(['/video']);
 
         return [
           hideSpinner(),
           showNotification({isFailure: false, text: 'SIGN_IN_SUCCESS'}),
+          notificationMiddleware()
+        ];
+      })
+    )
+  );
+
+  logoutUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.LOGOUT_USER),
+      switchMap(() => {
+        this.authService.removeToken();
+        this.router.navigate(['/auth']);
+
+        return [
+          hideSpinner(),
+          showNotification({isFailure: false, text: 'LOGOUT_SUCCESS'}),
           notificationMiddleware()
         ];
       })
