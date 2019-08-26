@@ -11,7 +11,7 @@ const MOVIE_ROUTES: Routes = [
     component: MovieComponent,
     children: [
       {
-        path: '',
+        path: 'list',
         component: MovieListComponent
       },
       {
@@ -20,7 +20,7 @@ const MOVIE_ROUTES: Routes = [
       },
       {
         path: '**',
-        redirectTo: ''
+        redirectTo: 'list'
       }
     ]
   }

@@ -1,5 +1,6 @@
 import {createAction, props} from '@ngrx/store';
-import {Movie} from '../../modules/movie/models/movie.model';
+import {Movie, MoviesResponse} from '../../modules/movie/models/movie.model';
+import {Filters} from '../../shared/components/table/models/filters.model';
 
 export const GET_MOVIE_BY_IMDBID = '[Movie] Get Movie By ImdbId';
 export const GET_MOVIE_BY_IMDBID_SUCCESS = '[Movie] Get Movie By ImdbId Success';
@@ -18,10 +19,10 @@ export const getMovieByImdbIdSuccess = createAction(
 
 export const getMovies = createAction(
   GET_MOVIES,
-  props<{params: any}>()
+  props<{filters: Filters}>()
 );
 
 export const getMoviesSuccess = createAction(
   GET_MOVIES_SUCCESS,
-  props<{movies: Movie[]}>()
+  props<{moviesCollection: MoviesResponse}>()
 );

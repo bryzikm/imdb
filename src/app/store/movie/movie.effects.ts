@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as MovieActions from './movie.actions';
-import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
+import {catchError, mergeMap, switchMap} from 'rxjs/operators';
 import {MovieService} from '../../modules/movie/movie.service';
-import {Movie} from '../../modules/movie/models/movie.model';
+import {Movie, MoviesResponse} from '../../modules/movie/models/movie.model';
 import {getMovieByImdbIdSuccess, getMoviesSuccess} from './movie.actions';
 import {hideSpinner} from '../spinner/spinner.actions';
 import {notificationMiddleware, showNotification} from '../notification/notification.actions';
+import {Filters} from '../../shared/components/table/models/filters.model';
 
 @Injectable()
 export class MovieEffects {
@@ -35,9 +36,12 @@ export class MovieEffects {
   getMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(MovieActions.GET_MOVIES),
-      mergeMap((payload) => this.movieService.getMovies(payload)
+      mergeMap((payload: { filters: Filters }) => this.movieService.getMovies(payload.filters)
         .pipe(
-          map((response: Movie[]) => getMoviesSuccess({movies: response}))
+          switchMap((response: MoviesResponse) => [
+            getMoviesSuccess({moviesCollection: response}),
+            hideSpinner()
+          ])
         )
       )
     )

@@ -10,3 +10,8 @@ export interface Movie {
   actors: Actor[];
   posterUrl: string;
 }
+
+export interface MoviesResponse {
+  collection: Movie[];
+  total: number;
+}

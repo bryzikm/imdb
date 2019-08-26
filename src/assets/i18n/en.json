@@ -13,5 +13,13 @@
   "MOVIE_LIST": "List of movies",
   "MISSING_DATA": "The data you're looking for is missing",
   "GET_MOVIE_ERROR": "Error occurred while getting the movie",
-  "HOME": "Home"
+  "HOME": "Home",
+  "ROW_NUMBER": "Row No.",
+  "TITLE": "Title",
+  "YEAR": "Year",
+  "META_SCORE": "Meta score",
+  "NEXT": "Next",
+  "PREVIOUS": "Previous",
+  "PAGE_OF": "Page {{number}} of {{total}}",
+  "CHOOSE_AMOUNT": "Choose amount of elements"
 }

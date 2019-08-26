@@ -8,6 +8,10 @@ import {SharedModule} from '../../shared/shared.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from '../../app.module';
 import {HttpClient} from '@angular/common/http';
+import {StoreModule} from '@ngrx/store';
+import {movieReducer} from '../../store/movie/movie.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {MovieEffects} from '../../store/movie/movie.effects';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,10 @@ import {HttpClient} from '@angular/common/http';
     CommonModule,
     MovieRouting,
     SharedModule,
+    StoreModule.forFeature('movie', movieReducer),
+    EffectsModule.forFeature([
+      MovieEffects
+    ]),
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

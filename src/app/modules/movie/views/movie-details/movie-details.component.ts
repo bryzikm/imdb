@@ -13,10 +13,10 @@ import {showSpinner} from '../../../../store/spinner/spinner.actions';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit {
-  movie$: Observable<Movie> = this.store.select(state => state.movie);
+  movie$: Observable<Movie> = this.store.select(state => state.movie.movie);
 
   constructor(private route: ActivatedRoute,
-              private store: Store<MovieState>) {
+              private store: Store<{movie: MovieState}>) {
   }
 
   ngOnInit() {
