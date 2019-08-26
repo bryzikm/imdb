@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AuthComponent } from './auth.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AuthComponent} from './auth.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../../shared/shared.module';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -8,9 +12,26 @@ describe('AuthComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      imports: [
+        HttpClientModule,
+        RouterTestingModule,
+        SharedModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: ((http: HttpClient) => new TranslateHttpLoader(http, '/assets/i18n/', '.json')),
+            deps: [HttpClient]
+          }
+        }),
+      ],
+      declarations: [
+        AuthComponent
+      ],
+      providers: [
+        HttpClient
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -18,6 +39,8 @@ describe('AuthComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  afterEach(() => { fixture.destroy(); });
 
   it('should create', () => {
     expect(component).toBeTruthy();
