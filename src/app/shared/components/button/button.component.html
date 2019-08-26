@@ -1,0 +1,8 @@
+<button class="button"
+        [ngClass]="{'button--disabled': disabled}"
+        [type]="type"
+        [disabled]="disabled">
+  <span class="button__text">
+    {{ text | translate }}
+  </span>
+</button>

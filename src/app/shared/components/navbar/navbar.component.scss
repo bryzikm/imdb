@@ -1,0 +1,25 @@
+@import "~src/assets/scss/variables";
+
+.navbar {
+  height: 80px;
+  width: 100%;
+  background-color: $green-3;
+  display: flex;
+  position: fixed;
+  flex-wrap: wrap;
+  align-items: center;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 10px 0 rgba($black,.12);
+  z-index: 100;
+
+  &__header {
+    font-size: $font-30;
+    color: $white;
+    display: inline-flex;
+  }
+
+  &__button {
+    display: inline-flex;
+  }
+}

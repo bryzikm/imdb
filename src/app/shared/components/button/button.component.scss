@@ -1,0 +1,26 @@
+@import "~src/assets/scss/variables";
+@import "~src/assets/scss/mixins";
+
+.button {
+  display: block;
+  padding: 10px 30px;
+  width: 100%;
+  background-color: $green-1;
+  border: 0;
+  cursor: pointer;
+  color: $white;
+  font-size: $font-16;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  @include transition(.3s);
+
+  &:hover {
+    background-color: darken($green-1, 10%);
+    @include transition(.3s);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,15 @@
+@import "~src/assets/scss/variables";
+
+
+.error {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  bottom: 0;
+  left: 0;
+
+  &__label {
+    font-size: $font-14;
+    color: $red-1;
+  }
+}

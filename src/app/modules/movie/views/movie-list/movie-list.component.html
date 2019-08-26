@@ -1,0 +1,17 @@
+<section class="movie-list">
+  <div class="container">
+    <h2 class="movie-list__header">
+      {{ 'MOVIE_LIST' | translate }}
+    </h2>
+    <div class="movie-list__table">
+      <app-table class="movie-list__table"
+                 [columns]="columns"
+                 [data]="data$"
+                 [limitOptions]="limitOptions"
+                 [total]="total$ | async"
+                 (rowClick)="showMovieDetails($event);"
+                 (filtersChange)="onFiltersChange($event);">
+      </app-table>
+    </div>
+  </div>
+</section>

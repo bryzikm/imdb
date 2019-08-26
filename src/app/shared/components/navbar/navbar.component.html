@@ -1,0 +1,13 @@
+<div class="navbar">
+  <div class="container">
+    <h1 class="navbar__header">
+      {{ 'IMDB' | translate}}
+    </h1>
+    <app-button class="navbar__button"
+                [type]="'button'"
+                [text]="'LOGOUT'"
+                (click)="logoutUser()">
+    </app-button>
+  </div>
+</div>
+

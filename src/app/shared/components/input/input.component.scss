@@ -1,0 +1,28 @@
+@import "~src/assets/scss/variables";
+
+.input {
+  display: block;
+  padding: 0 0 30px;
+  margin: 0 0 20px;
+  position: relative;
+
+  &__field {
+    display: block;
+    border: 0;
+    border-bottom: 1px solid $green-1;
+    padding: 5px 10px;
+    font-size: $font-15;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    color: $black;
+    background-color: transparent;
+
+    &::-webkit-input-placeholder,
+    &:-moz-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder {
+      color: $black;
+    }
+  }
+}

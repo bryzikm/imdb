@@ -1,0 +1,71 @@
+<table *ngIf="(data | async) as elements"
+       class="table">
+  <thead class="table__header">
+  <tr class="table__header-row">
+    <td class="table__header-cell table__cell">
+      {{ 'ROW_NUMBER' | translate }}
+    </td>
+    <td *ngFor="let column of columns"
+        class="table__header-cell table__cell"
+        [ngClass]="{'table__header-cell--sortable': column.isSortable}"
+        (click)="onSortHeaderClick(column);">
+      {{ column.header | translate }}
+      <span *ngIf="filters.sortBy === column.name"
+            class="table__header-cell-direction"
+            [ngClass]="{
+              'table__header-cell-direction--ascending': filters.sortDir === '1',
+              'table__header-cell-direction--descending': filters.sortDir === '-1'
+            }">
+      </span>
+    </td>
+  </tr>
+  </thead>
+  <tbody class="table__body">
+  <tr *ngFor="let row of elements; let i = index"
+      class="table__body-row"
+      (click)="onRowClick(row)">
+    <td class="table__body-cell table__body-cell--row-no table__cell">
+      {{ i + 1 }}
+    </td>
+    <td *ngFor="let column of columns"
+        class="table__body-cell table__cell">
+      {{ row[column.name] }}
+    </td>
+  </tr>
+  </tbody>
+  <tfoot class="table__foot">
+  <tr class="table__foot-row">
+    <td class="table__foot-cell table__foot-cell--left"
+        colspan="2">
+      <div class="pagination">
+
+      </div>
+      <button class="pagination__button"
+              [disabled]="filters.page === 1"
+              (click)="decrementPage()">
+        <
+      </button>
+      <span class="pagination__statement">
+        {{ 'PAGE_OF' | translate : {number: filters.page, total: numberOfPages} }}
+      </span>
+      <button class="pagination__button"
+              [disabled]="filters.page === numberOfPages"
+              (click)="incrementPage()">
+        >
+      </button>
+    </td>
+    <td class="table__foot-cell table__foot-cell--right"
+        colspan="2">
+      <select class="pagination-limit"
+              [(ngModel)]="filters.limit"
+              (ngModelChange)="onElementsAmountChange();">
+        <option [ngValue]="0" selected>
+          {{ 'CHOOSE_AMOUNT' | translate }}
+        </option>
+        <option *ngFor="let option of limitOptions"
+                [ngValue]="option">{{ option }}</option>
+      </select>
+    </td>
+  </tr>
+  </tfoot>
+</table>

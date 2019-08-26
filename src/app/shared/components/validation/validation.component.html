@@ -1,0 +1,6 @@
+<div class="error" *ngIf="control && control.invalid && (control.dirty || control.touched)">
+  <label *ngIf="control.hasError('required')"
+         class="error__label">{{ "FIELD_REQUIRED" | translate }}</label>
+  <label *ngIf="control.hasError('email') && !control.hasError('required')"
+         class="error__label">{{ "INCORRECT_EMAIL" | translate }}</label>
+</div>
