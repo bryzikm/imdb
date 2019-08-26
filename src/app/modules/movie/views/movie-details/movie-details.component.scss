@@ -9,6 +9,7 @@
     width: 100%;
     color: $blue-1;
     font-size: $font-24;
+    display: flex;
   }
 
   &__header-back {
@@ -17,10 +18,113 @@
     margin-right: 15px;
     color: $green-1;
     font-weight: 400;
+    display: flex;
+    align-items: center;
     @include transition(.3s);
 
     &:hover {
       color: darken($green-1, 10%);
+      @include transition(.3s);
+    }
+  }
+
+  &__header-back-image {
+    width: 25px;
+    height: 25px;
+    transform: rotate(-180deg);
+  }
+
+  &__link {
+    color: $blue-1;
+    text-decoration: none;
+    @include transition(.3s);
+
+    &:hover {
+      @include transition(.3s);
+      color: darken($blue-1, 15%);
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__content-column {
+    width: 50%;
+    padding: 0 15px 45px;
+
+    &--image {
+      text-align: center;
+    }
+
+    &--full {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $smallScreen) {
+      width: 100%;
+    }
+  }
+
+  &__content-column-header {
+    font-size: $font-18;
+    color: $blue-1;
+    width: 100%;
+    margin: 0 0 30px;
+  }
+
+  &__column-image {
+    max-width: 100%;
+  }
+}
+
+.details-table {
+  &__cell {
+    padding: 0 25px 5px 0;
+  }
+
+  &__cell-header {
+    font-weight: 600;
+    color: $blue-1;
+    font-size: $font-15;
+  }
+}
+
+.list {
+  padding-left: 15px;
+
+  &__element {
+    margin: 0 0 10px;
+  }
+
+  &__element-link {
+    color: $green-1;
+    text-decoration: none;
+    @include transition(.3s);
+
+    &:hover {
+      @include transition(.3s);
+      color: darken($green-1, 15%);
+    }
+  }
+
+  &__element-button {
+    color: $white;
+    background-color: $blue-1;
+    font-size: $font-15;
+    cursor: pointer;
+    border: 0;
+    padding: 5px 10px;
+    font-weight: 500;
+    outline: none;
+    margin-left: 15px;
+    display: inline-block;
+    @include transition(.3s);
+
+    &:hover {
+      background-color: darken($blue-1, 15%);
       @include transition(.3s);
     }
   }

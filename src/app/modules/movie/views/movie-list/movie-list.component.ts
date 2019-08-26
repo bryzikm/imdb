@@ -44,7 +44,7 @@ export class MovieListComponent {
     this.router.navigate(['/movie', movie.imdbId]);
   }
 
-  onFiltersChange(filters: Filters) {
+  onFiltersChange(filters: Filters): void {
     this.store.dispatch(showSpinner());
     this.store.dispatch(getMovies({filters}));
   }

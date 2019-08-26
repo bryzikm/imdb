@@ -12,6 +12,8 @@ import {StoreModule} from '@ngrx/store';
 import {movieReducer} from '../../store/movie/movie.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {MovieEffects} from '../../store/movie/movie.effects';
+import {actorReducer} from '../../store/actor/actor.reducer';
+import {ActorEffects} from '../../store/actor/actor.effects';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,10 @@ import {MovieEffects} from '../../store/movie/movie.effects';
     MovieRouting,
     SharedModule,
     StoreModule.forFeature('movie', movieReducer),
+    StoreModule.forFeature('actor', actorReducer),
     EffectsModule.forFeature([
-      MovieEffects
+      MovieEffects,
+      ActorEffects
     ]),
     TranslateModule.forChild({
       loader: {

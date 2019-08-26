@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './interceptors/token.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import {TableComponent} from './components/table/table.component';
+import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
 
 const COMPONENTS = [
   InputComponent,
@@ -23,7 +24,8 @@ const COMPONENTS = [
   SpinnerComponent,
   NotificationComponent,
   NavbarComponent,
-  TableComponent
+  TableComponent,
+  ImageDialogComponent
 ];
 
 @NgModule({

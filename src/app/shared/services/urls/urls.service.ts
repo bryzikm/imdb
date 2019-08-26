@@ -12,4 +12,7 @@ export class UrlsService {
 
   // MOVIES
   public static readonly MOVIES = `${UrlsService.API_URL}/movies`;
+
+  // ACTORS
+  public static readonly ACTORS = `${UrlsService.API_URL}/actors`;
 }

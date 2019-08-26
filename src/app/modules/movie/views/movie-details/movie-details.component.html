@@ -1,11 +1,74 @@
 <section class="movie-details">
-  <div *ngIf="movie$ | async"
+  <div *ngIf="(movie$ | async) as movie"
        class="container">
     <h2 class="movie-details__header">
-     <a class="movie-details__header-back" routerLink="/movie"><</a> {{ (movie$ | async).title }}
+      <a class="movie-details__header-back" routerLink="/movie">
+        <img class="movie-details__header-back-image"
+             src="assets/img/arrow.png"/>
+      </a>
+      <a class="movie-details__link"
+         [href]="'https://www.imdb.com/title/' + movie.imdbId"
+         target="_blank">
+        {{ movie.title }}
+      </a>
     </h2>
     <div class="movie-details__content">
-
+      <div class="movie-details__content-column movie-details__content-column--image">
+        <img class="movie-details__column-image"
+             [src]="movie.posterUrl"/>
+      </div>
+      <div class="movie-details__content-column">
+        <table class="details-table">
+          <tr class="details-table__row">
+            <td class="details-table__cell details-table__cell-header">
+              {{ 'DIRECTOR' | translate }}:
+            </td>
+            <td class="details-table__cell">
+              {{ movie.director }}
+            </td>
+          </tr>
+          <tr class="details-table__row">
+            <td class="details-table__cell details-table__cell-header">
+              {{ 'PRODUCTION_YEAR' | translate }}:
+            </td>
+            <td class="details-table__cell">
+              {{ movie.year }}
+            </td>
+          </tr>
+          <tr class="details-table__row">
+            <td class="details-table__cell details-table__cell-header">
+              {{ 'META_SCORE' | translate }}:
+            </td>
+            <td class="details-table__cell">
+              {{ movie.metascore }}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="movie-details__content-column movie-details__content-column--full">
+        <h3 class="movie-details__content-column-header">
+          {{ 'ACTORS' | translate }}:
+        </h3>
+        <ul class="list">
+          <li class="list__element"
+              *ngFor="let actor of movie.actors">
+            <a [href]="'https://www.imdb.com/name/' + actor.imdbId"
+               class="list__element-link"
+               target="_blank">
+              {{ actor.name }}
+            </a>
+            <button class="list__element-button"
+                    (click)="getActorByImdbId(actor);">
+              {{ 'SEE_IMAGE' | translate }}
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
+    <app-image-dialog *ngIf="(actor$ | async) as actor"
+                      [header]="actor.name"
+                      [imageSource]="actor.photoUrl"
+                      (closeDialog)="closeDialog()">
+    </app-image-dialog>
   </div>
 </section>

@@ -1,0 +1,56 @@
+@import "~src/assets/scss/variables";
+@import "~src/assets/scss/mixins";
+
+.dialog-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba($black, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.dialog {
+  background-color: $white;
+  width: 400px;
+  max-width: 95%;
+
+  &__header {
+    background-color: $green-3;
+    padding: 15px 20px;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__header-button {
+    padding: 5px 10px;
+    background-color: $green-1;
+    border: 0;
+    cursor: pointer;
+    color: $white;
+    font-size: $font-15;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    @include transition(.3s);
+
+    &:hover {
+      background-color: darken($green-1, 10%);
+      @include transition(.3s);
+    }
+  }
+
+  &__content {
+    padding: 25px 30px;
+    text-align: center;
+  }
+
+  &__content-image {
+    max-width: 100%;
+  }
+}

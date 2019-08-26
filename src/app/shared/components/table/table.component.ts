@@ -3,6 +3,7 @@ import {Column} from './models/column.model';
 import {Observable} from 'rxjs';
 import {Movie} from '../../../modules/movie/models/movie.model';
 import {Filters} from './models/filters.model';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -32,7 +33,8 @@ export class TableComponent implements OnInit {
   readonly DESCENDING = '-1';
   private readonly FILTERS = 'FILTERS';
 
-  constructor() {
+  constructor(private router: Router,
+              private activeRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -55,12 +57,12 @@ export class TableComponent implements OnInit {
     this.saveFilters();
   }
 
-  decrementPage() {
+  decrementPage(): void {
     this.filters.page -= 1;
     this.saveFilters();
   }
 
-  incrementPage() {
+  incrementPage(): void {
     this.filters.page += 1;
     this.saveFilters();
   }
@@ -81,7 +83,7 @@ export class TableComponent implements OnInit {
     this.saveFilters();
   }
 
-  private getSavedFilters() {
+  private getSavedFilters(): void {
     const savedFilters = this.getFilters();
 
     if (savedFilters) {
@@ -90,6 +92,7 @@ export class TableComponent implements OnInit {
 
     this.countNumberOfPages();
     this.filtersChange.emit(this.filters);
+    this.resolvePageParamInURL();
   }
 
   private getFilters(): Filters {
@@ -101,9 +104,20 @@ export class TableComponent implements OnInit {
   private saveFilters(): void {
     localStorage.setItem(this.FILTERS, JSON.stringify(this.filters));
     this.filtersChange.emit(this.filters);
+    this.resolvePageParamInURL();
   }
 
-  private countNumberOfPages() {
+  private countNumberOfPages(): void {
     this.numberOfPages = this.totalAmount && this.filters.limit ? Math.ceil(this.totalAmount / this.filters.limit) : this.filters.page;
+  }
+
+  private resolvePageParamInURL(): void {
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activeRoute,
+        queryParams: { page: this.filters.page },
+        queryParamsHandling: 'merge'
+      });
   }
 }

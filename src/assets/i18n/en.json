@@ -21,5 +21,11 @@
   "NEXT": "Next",
   "PREVIOUS": "Previous",
   "PAGE_OF": "Page {{number}} of {{total}}",
-  "CHOOSE_AMOUNT": "Choose amount of elements"
+  "CHOOSE_AMOUNT": "Choose amount of elements",
+  "DIRECTOR": "Director",
+  "PRODUCTION_YEAR": "Production year",
+  "ACTORS": "Actors",
+  "SEE_IMAGE": "See image",
+  "CLOSE": "Close",
+  "GET_ACTOR_IMAGE_ERROR": "Error occurred while getting the actor image"
 }
